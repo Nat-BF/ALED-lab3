@@ -1,5 +1,6 @@
 package es.upm.dit.aled.lab3.binary;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -79,8 +80,28 @@ public class FASTAReaderSuffixes extends FASTAReader {
 	@Override
 	public List<Integer> search(byte[] pattern) {
 		// TODO
-		return null;
+		List<Integer> posiciones = new ArrayList<>();
+		int lo=0;
+		int hi=content.length-1;//punteros en los extremos
+		boolean found = false; //saver si hay una coincidencia
+		int index = 0; //caracter actual con el que se compara pattern
+		
+		while(lo>=hi) { 
+			int m = (hi-lo)/2; //empezar a evaluar por el medio
+			int posSuffix=suffixes[m].suffixIndex;
+			if(pattern [index] == content[posSuffix+index]) {
+				index++;
+			} else if(arr[pos]>valor) { //buscar en la izquierda -- actualizar dch
+				dch=pos-1;
+				pos= izq +((dch-izq)/2);
+			}else {//buscar en la derecha -- actualizar izq
+				izq=pos +1;
+				pos= izq +((dch-izq)/2);
+			}
+		}
+		return posiciones;
 	}
+	//Complejidad. Hay n sufijos en un genoma tamaño n. O[n] (busq lineal es O[n])
 
 	public static void main(String[] args) {
 		long t1 = System.nanoTime();
