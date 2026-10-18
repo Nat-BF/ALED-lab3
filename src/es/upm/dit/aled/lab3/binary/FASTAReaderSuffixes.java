@@ -91,12 +91,12 @@ public class FASTAReaderSuffixes extends FASTAReader {
 			int posSuffix=suffixes[m].suffixIndex;
 			if(pattern [index] == content[posSuffix+index]) {
 				index++;
-			} else if(arr[pos]>valor) { //buscar en la izquierda -- actualizar dch
-				dch=pos-1;
-				pos= izq +((dch-izq)/2);
+			} else if(pattern[index]>m) { //buscar en la izquierda -- actualizar dch
+				lo=index-1;
+				index= hi +((lo-hi)/2);
 			}else {//buscar en la derecha -- actualizar izq
-				izq=pos +1;
-				pos= izq +((dch-izq)/2);
+				hi=index +1;
+				index= hi +((lo-hi)/2);
 			}
 		}
 		return posiciones;
