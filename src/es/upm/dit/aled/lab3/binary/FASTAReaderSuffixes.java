@@ -83,7 +83,7 @@ public class FASTAReaderSuffixes extends FASTAReader {
 		List<Integer> posiciones = new ArrayList<>();
 		int lo=0;
 		int hi=content.length-1;//punteros en los extremos
-		boolean found = false; //saver si hay una coincidencia
+		boolean found = false; //saber si hay una coincidencia
 		int index = 0; //caracter actual con el que se compara pattern
 		
 		while(lo>=hi) { 
